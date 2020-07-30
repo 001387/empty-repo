@@ -1,14 +1,19 @@
 package com.zyyh.market;
 
+import java.util.List;
+
 public class PointCalculatr {
 
-    public int calculate(Goods goods) {
+    public int calculate(List<Goods> goods) {
         int totalPoints = 0;
-        if(goods.getGoodsType().equals(GoodsType.PROMOTION)){
-            totalPoints = goods.getPrice()*2;
-        } else if (goods.getGoodsType().equals(GoodsType.NOPROMOTION)){
-            totalPoints =  goods.getPrice();
+        for (Goods singleGoods: goods) {
+            if(singleGoods.getGoodsType().equals(GoodsType.PROMOTION)){
+                totalPoints = singleGoods.getPrice()*2;
+            } else if (singleGoods.getGoodsType().equals(GoodsType.NOPROMOTION)){
+                totalPoints =  singleGoods.getPrice();
+            }
         }
+
         return totalPoints;
     }
 }
