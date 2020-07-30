@@ -3,6 +3,7 @@ package com.zyyh.market;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static org.hamcrest.core.Is.is;
@@ -47,6 +48,22 @@ public class MarketTest {
         int points = pointCalaulatr.calculate(goods);
 //        then
         assertThat(points, is(20));
+    }
+
+    @Test
+    public void should_return_100_points_when_buy_promotional_goods_apple_10yuan_and_watemelon_30yuan_and_laundry_20yuan(){
+//        given
+        Goods apple = new Goods("Apple",10, GoodsType.PROMOTION);
+        Goods watermelon = new Goods("Watermelon",30, GoodsType.PROMOTION);
+        Goods laundry = new Goods("Laundry",20, GoodsType.NOPROMOTION);
+        PointCalculatr pointCalaulatr = new PointCalculatr();
+        List<Goods> goods = Arrays.asList(apple, watermelon, laundry);
+
+//        when
+        int points = pointCalaulatr.calculate(goods);
+
+//        then
+        assertThat(points, is(100));
     }
 
 }

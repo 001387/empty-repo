@@ -8,9 +8,9 @@ public class PointCalculatr {
         int totalPoints = 0;
         for (Goods singleGoods: goods) {
             if(singleGoods.getGoodsType().equals(GoodsType.PROMOTION)){
-                totalPoints = singleGoods.getPrice()*2;
+                totalPoints += singleGoods.getPrice()*2;
             } else if (singleGoods.getGoodsType().equals(GoodsType.NOPROMOTION)){
-                totalPoints =  singleGoods.getPrice();
+                totalPoints += singleGoods.getPrice();
             }
         }
 
